@@ -9,9 +9,14 @@ const SLIDE_DATA = [
 ];
 
 class WelcomeScreen extends Component {
+    onSlidesComplete = () => {
+        //will auto send down props
+        this.props.navigation.navigate('auth');
+    }
     render() {
         return (
-            <Slides data={SLIDE_DATA}/>
+            //callback, bind
+            <Slides data={SLIDE_DATA} onComplete={this.onSlidesComplete}/>
         );
     }
 }
