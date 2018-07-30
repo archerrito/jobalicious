@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux';
 
@@ -27,7 +28,13 @@ export default class App extends React.Component {
             screen: createStackNavigator({
               review: { screen: ReviewScreen },
               settings: { screen: SettingsScreen }
-            })
+            }),
+            navigationOptions: {
+              title: 'Review Jobs',
+              tabBarIcon: ({ tintColor }) => {
+                  return <Icon name="description" size={30} color={tintColor}/>
+              },
+            }
           }
         })
       }
