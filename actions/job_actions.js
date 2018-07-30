@@ -49,6 +49,7 @@ export const fetchJobs = (region, callback) => async dispatch => {
     let { data } = await axios.get(url)
     console.log(data)
     dispatch({ type: FETCH_JOBS, payload: fakeData(region) })
+    console.log(region);
     callback();
     } catch (err) {
     console.error(err)
