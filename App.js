@@ -31,6 +31,12 @@ export default class App extends React.Component {
           }
         })
       }
+    }, {
+      navigationOptions: {
+        tabBarVisible: false
+      }, 
+      //prevents loading of all screens on initial load
+      lazy: true
     });
     return (
       <Provider store={store}>
