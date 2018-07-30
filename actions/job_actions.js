@@ -1,6 +1,7 @@
 import axios from 'axios';
 import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
+import fakeData from './fakeData';
 
 import {
     FETCH_JOBS
@@ -25,16 +26,31 @@ const buildJobsUrl = (zip) => {
 
 //will make network request with thunk
 //pass in region object to get list of jobs
-export const fetchJobs = (region) => async (dispatch) =>{
+// export const fetchJobs = (region) => async (dispatch) => {
+//     try {
+//         //contains lat/lng
+//         let zip = await reverseGeocode(region);
+//         const url = buildJobsUrl(zip);
+//         //will make request, return response object
+//         let { data } = await axios.get(url);
+//         console.log(data);
+//         dispatch({ type: FETCH_JOBS, payload: data });
+//         console.log(region);
+//     } catch(e) {
+//         console.error(e);
+//     }
+// };
+
+//Sample data
+export const fetchJobs = (region, callback) => async dispatch => {
     try {
-        //contains lat/lng
-        let zip = await reverseGeocode(region);
-        const url = buildJobsUrl(zip);
-        //qill make request, return response object
-        let { data } = await axios.get(url);
-        dispatch({ type: FETCH_JOBS, payload: data });
-        console.log(data);
-    } catch(e) {
-        console.error(e);
+    let zip = await reverseGeocode(region)
+    const url = buildJobsUrl(zip)
+    let { data } = await axios.get(url)
+    console.log(data)
+    dispatch({ type: FETCH_JOBS, payload: fakeData(region) })
+    callback();
+    } catch (err) {
+    console.error(err)
     }
-};
+   }
