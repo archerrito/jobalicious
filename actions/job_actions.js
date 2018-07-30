@@ -5,7 +5,8 @@ import fakeData from './fakeData';
 
 import {
     FETCH_JOBS,
-    LIKE_JOB
+    LIKE_JOB,
+    CLEAR_LIKED_JOBS
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
@@ -62,4 +63,11 @@ export const fetchJobs = (region, callback) => async dispatch => {
            payload: job, 
            type: LIKE_JOB
        }
+   }
+
+   export const clearLikedJobs = () => {
+       //no async code, no payload
+       //just return action with type clearliked jobs
+       //liked reducer going to do something with that
+       return { type: CLEAR_LIKED_JOBS };
    }
