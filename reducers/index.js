@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
+import auth from './auth_reducer';
 
 export default combineReducers({
-    auth: () => { return {} }
+    //gives us application level state called auth, has property called token
+    auth
 });

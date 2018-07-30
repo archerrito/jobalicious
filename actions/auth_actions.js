@@ -15,6 +15,7 @@ export const facebookLogin = () => async dispatch => {
     if (token) {
         //Dispatch action saying FBlogin is done
         //redux store 
+        //reducer stores token
         dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
     } else {
         //start up FB login process, helper function
