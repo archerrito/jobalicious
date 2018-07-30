@@ -32,9 +32,13 @@ export default class App extends React.Component {
             navigationOptions: {
               title: 'Review Jobs',
               tabBarIcon: ({ tintColor }) => {
-                  return <Icon name="description" size={30} color={tintColor}/>
+                  return <Icon name="favorite" size={30} color={tintColor}/>
               },
             }
+          }
+        }, {
+          tabBarOptions: {
+            labelStyle: { fontSize: 12 }
           }
         })
       }
